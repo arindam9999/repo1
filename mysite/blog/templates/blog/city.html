@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{city}}</title>
+</head>
+<body>
+	<div>
+		<h1>EKARTEYEAT</h1>
+	</div>
+	<div>
+		<h1><a href=" {% url 'blog-home'%} ">home</a> login details <a href="{% url 'blog-about'%}">about</a> !!!!</h1>
+	</div>
+	<div>
+		<h2>{{city}}</h2>
+	</div>
+	{% for hotel in hotels%}
+	<div>
+		<a href="{% url 'hotel-detail' pk=hotel.id%}">
+			<h3>{{hotel.name}}</h3>
+		</a>
+	</div>
+	{% endfor %}
+
+</body>
+</html>

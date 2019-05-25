@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{hotel}}</title>
+</head>
+<body>
+	<div>
+		<h1>EKARTEYEAT</h1>
+	</div>
+	<div>
+		<h1><a href=" {% url 'blog-home'%} ">home</a> login details <a href="{% url 'blog-about'%}">about</a> !!!!</h1>
+	</div>
+	<div>
+		<img src="{{hotel.image.url}}">
+	</div>
+	<div>
+		<h2>NAME - {{hotel}}</h2>
+	</div>
+	<div>
+		<h2>LOCATION - {{hotel.location}}</h3>
+	</div>
+	<div>
+		<h2>FACILITY</h2> 
+		<h3>{{hotel.facility}}</h3>
+	</div>
+	<div>
+		<h2>Price Per Person</h2> 
+		<h3>{{hotel.price_per_person}}</h3>
+	</div>
+
+	<div >
+   	<form method="POST" >
+   		{% csrf_token %}
+   		<fieldset >
+   			<legend >Apply Here</legend>
+   			{{form}}
+   		</fieldset>
+   		<div >
+   			<button  type="submit">
+               Request
+   			</button>
+   		</div>
+   	</form>
+   </div>
+
+</body>
+</html>

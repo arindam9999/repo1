@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body>
+	<div>
+		<h1>EKARTEYEAT</h1>
+	</div>
+	<div>
+		{% if messages%}
+	    	{% for message in  messages %}
+	    	   <div >{{message}}</div>
+	    	{% endfor%}
+	    {% endif %}
+	</div>
+	<div>
+		<img src="media/opening.jpg">
+	</div>
+	<div>
+		<h2>Select your city</h2>
+	</div>
+	<div>
+		{% for city in cities %}
+		<a href="{% url 'city-detail' pk=city.id%}"> <img src="{{city.image.url}}"></a>
+		{% endfor %}
+	</div>
+	<div>
+		<h2>Gallery</h2>
+	</div>
+	<div>
+		<h5>Photos</h5>
+	</div>
+	<div>
+		<h2>Contact us</h2>
+	</div>
+	<div>
+		<h5>Descriptions...</h5>
+	</div>
+</body>
+</html>
