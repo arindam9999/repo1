@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Hotel , City
+from .models import Hotel , City , GalleryPic , Profile
 from django.shortcuts import redirect
 from .forms import ClientRequestForm 
 from django.contrib import messages
@@ -7,7 +7,9 @@ from django.contrib import messages
 
 def home(request):
 	cities=City.objects.all()
-	return render(request,'blog/home.html',{'cities':cities})
+	pics=GalleryPic.objects.all()
+	profiles=Profile.objects.all()
+	return render(request,'blog/home.html',{'cities':cities ,'pics':pics ,'profiles':profiles})
 
 
 def about(request):

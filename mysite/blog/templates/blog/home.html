@@ -27,15 +27,18 @@
 	</div>
 	<div>
 		<h2>Gallery</h2>
-	</div>
-	<div>
-		<h5>Photos</h5>
+		{% for  pic in pics %}
+		<img src="{{pic.image.url}}">
+		{% endfor %}
 	</div>
 	<div>
 		<h2>Contact us</h2>
-	</div>
-	<div>
-		<h5>Descriptions...</h5>
+		{% for  profile in profiles %}
+		<img src="{{profile.image.url}}">
+		<h3> Name - {{profile.name}} </h3>
+		<h3> Phone no - {{profile.phone_no}} </h3>
+		<h3> Description - {{profile.description}} </h3>
+		{% endfor %}
 	</div>
 </body>
 </html>

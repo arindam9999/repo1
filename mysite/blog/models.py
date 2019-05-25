@@ -2,7 +2,7 @@ from django.db import models
 
 class City(models.Model):
 	name=models.CharField(max_length=100)
-	#image=models.ImageField(default='default.bmp',upload_to='city_pics')
+	image=models.ImageField(default='default.bmp',upload_to='city_pics')
 
 
 	def __str__(self):
@@ -28,6 +28,7 @@ class ClientRequest(models.Model):
 	date_of_booking=models.DateField()
 	time_of_booking=models.TimeField()
 	client_email=models.EmailField()
+
 	def __str__(self):
 		return self.client_name
 
@@ -38,6 +39,27 @@ class CityImage(models.Model):
 class HotelImage(models.Model):
 	name=models.ForeignKey(Hotel,on_delete=models.CASCADE)
 	image=models.ImageField(default='default.bmp',upload_to='hotel_pics')
+
+
+class GalleryPic(models.Model):
+	name=models.CharField(max_length=100)
+	image=models.ImageField(default='default.bmp',upload_to='gallery_pics')
+
+
+	def __str__(self):
+		return self.name
+
+
+class Profile(models.Model):
+	name=models.CharField(max_length=100)
+	image=models.ImageField(default='default.bmp',upload_to='profile_pics')
+	description=models.TextField()
+	phone_no=models.CharField(max_length=100)
+
+
+	def __str__(self):
+		return self.name
+
 
 
 
