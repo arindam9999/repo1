@@ -1,47 +1,144 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{{hotel}}</title>
-</head>
-<body>
-	<div>
-		<h1>EKARTEYEAT</h1>
-	</div>
-	<div>
-		<h1><a href=" {% url 'blog-home'%} ">home</a> login details <a href="{% url 'blog-about'%}">about</a> !!!!</h1>
-	</div>
-	<div>
-		<img src="{{hotel.image.url}}">
-	</div>
-	<div>
-		<h2>NAME - {{hotel}}</h2>
-	</div>
-	<div>
-		<h2>LOCATION - {{hotel.location}}</h3>
-	</div>
-	<div>
-		<h2>FACILITY</h2> 
-		<h3>{{hotel.facility}}</h3>
-	</div>
-	<div>
-		<h2>Price Per Person</h2> 
-		<h3>{{hotel.price_per_person}}</h3>
-	</div>
+{% extends 'blog/base.html' %}
 
-	<div >
-   	<form method="POST" >
-   		{% csrf_token %}
-   		<fieldset >
-   			<legend >Apply Here</legend>
-   			{{form}}
-   		</fieldset>
-   		<div >
-   			<button  type="submit">
-               Request
-   			</button>
-   		</div>
-   	</form>
-   </div>
+{% block content %}
+{%  load static  %}
 
-</body>
-</html>
+ <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <!-- Slide One - Set the background image for this slide in the line below -->
+          <div class="carousel-item active" style="background-image: url({{ hotel_images.0.image.url }})">
+            <div class="carousel-caption d-none d-md-block">
+              <h3 class="display-4">First Slide</h3>
+              <p class="lead">This is a description for the first slide.</p>
+            </div>
+          </div>
+          <!-- Slide Two - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url({{ hotel_images.0.image.url }})">
+            <div class="carousel-caption d-none d-md-block">
+              <h3 class="display-4">Second Slide</h3>
+              <p class="lead">This is a description for the second slide.</p>
+            </div>
+          </div>
+          <!-- Slide Three - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url({% static 'images/hero_3.jpg' %})">
+            <div class="carousel-caption d-none d-md-block">
+              <h3 class="display-4">Third Slide</h3>
+              <p class="lead">This is a description for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+      </div>
+
+    
+<div class="site-section bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+              <h2 class="mb-5">{{hotel}}</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8 col-lg-8 mb-5">
+              <div class="hotel-room text-left">
+                <div class="hotel-room-body">
+                  <h3 class="heading mb-0"><a href="#">ADDRESS</a></h3>
+                  <p>{{hotel.location}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-4 mb-5">
+              <div class="hotel-room text-center">
+                <div class="hotel-room-body">
+                  <h5 class="mb-0"><a href="#">Starting At</a></h5>
+                  <h2 class="price" style="color: black; font-size: 80px;">₹{{hotel.price_per_person}}</h2>
+                  <h6><strong>per person</strong></h6>
+                  <a href="#enquiry"><button type="button" class="btn btn-light">Send Enquiry</button></a>
+                </div>
+              </div>
+            </div>
+             
+            
+            <div class="col-md-5 col-lg-12 mb-5">
+              <div class="hotel-room text-center">
+                <a href="#" class="d-block mb-0 thumbnail"><img style="width:150px;height:150px;" src="{% static 'images/food_1.jpg' %}" alt="Image" class="img-fluid"></a>
+                <div class="hotel-room-body">
+                  <h3 class="heading mb-0">Veg</h3>
+                  <p>{{hotel.veg_description}}</p>
+                  <strong class="price">₹{{hotel.veg_price}} / per person</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-5 col-lg-12 mb-5">
+              <div class="hotel-room text-center">
+                <a href="#" class="d-block mb-0 thumbnail"><img style="width:150px;height:150px;" src="{% static 'images/food_2.jpg' %}" alt="Image" class="img-fluid"></a>
+                <div class="hotel-room-body">
+                  <h3 class="heading mb-0">Non-Veg</h3>
+                  <p>{{hotel.nonveg_description}}</p>
+                  <strong class="price">₹{{hotel.nonveg_price}} / per person</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 col-lg-12 mb-5">
+              <div class="hotel-room text-left">
+                <div class="hotel-room-body">
+                  <h3 class="heading mb-0">About The Hotel</h3>
+                  <p>{{ hotel.facility }}</p>
+                </div>
+              </div>
+            </div>
+           
+          
+<a name="enquiry"></a>
+          </div>
+        </div>
+      </div>
+
+	
+
+<div class="site-section site-section-sm">
+        <div class="container">
+          <div class="row">
+            
+         
+            <div class="col-md-12 col-lg-12 mb-5">
+
+                <div class="col-md-6 mx-auto text-center mb-5 section-heading">
+                    <h2 class="mb-5">Book Now!!</h2>
+                </div>
+             
+
+             	{% load crispy_forms_tags %}
+
+  			<form method="POST">
+  				<fieldset >
+    				{% csrf_token %}
+    				{{ form|crispy }}
+    			</fieldset>
+    			<div class="row form-group">
+                  <div class="col-md-12">
+                    <input type="submit" value="Submit" class="btn btn-primary pill px-4 py-2">
+                  </div>
+           	</div>
+    	       <p>*This is not final booking, we will confirm by further contacting you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+{% endblock %}
