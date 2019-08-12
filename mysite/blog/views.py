@@ -35,7 +35,7 @@ def hotel_detail(request,pk):
 			post.hotel_name = hotel
 			post.save()
 			username=form.cleaned_data.get('client_name')
-			messages.success(request,f' {username},we thank u for applying to us! Your request has been successfully generated.' )
+			#messages.success(request,f' {username},we thank u for applying to us! Your request has been successfully generated.' )
 			return redirect('blog-home')
 
 	else :
