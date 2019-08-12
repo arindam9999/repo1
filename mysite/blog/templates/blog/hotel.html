@@ -122,12 +122,12 @@
                 </div>
              
 
-             	{% load crispy_forms_tags %}
+             	
 
   			<form method="POST">
   				<fieldset >
     				{% csrf_token %}
-    				{{ form|crispy }}
+    				{{ form }}
     			</fieldset>
     			<div class="row form-group">
                   <div class="col-md-12">
