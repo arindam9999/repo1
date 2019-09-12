@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> {{ title }} </title>
+    <link rel="stylesheet"  href="{% static 'css/style1.css' %}">
+  </head>
+  <body style="background-image: url({% static 'images/bg.jpg' %});background-size: cover;" >
+<div class="event-booking">
+  <h1>Book An Event</h1>
+
+  <form method ="POST" action=""> 
+    
+    
+  <div class="textbox">
+    <i class="fas fa-user"></i>
+     {% csrf_token %}
+    <input type="text" name="client_name" placeholder="Name*" value="{{ request.GET.client_name}}">
+  </div>
+
+  <div class="textbox">
+    <i class="fas fa-phone"></i>
+   
+    <input type="text" name="phone_no" placeholder="Phone*" value="{{ request.GET.phone_no}}">
+  </div>
+
+  <div class="textbox">
+    <i class="fas fa-users"></i>
+     
+    <input type="text" name="no_of_people" placeholder="Number of people*" value="{{ request.GET.no_of_people}}">
+  </div>
+
+  <div class="textbox">
+    <i class="fas fa-calendar"></i>
+     
+    <input type="text" name="date_of_booking" placeholder="Date of event*" value="{{request.GET.date_of_booking}}">
+  </div>
+
+  <div class="textbox">
+    <i class="fas fa-birthday-cake"></i>
+     
+    <input type="text" name="theme" placeholder="Theme*" value="{{request.GET.theme}}">
+  </div>
+
+  <div class="textbox">
+    <i class="fas fa-envelope"></i>
+
+    <input type="text" name="client_email" placeholder="E-mail*" value="{{request.GET.client_email}}">
+  </div>
+
+ 
+  <input type="submit" class="btn" value="Submit">
+
+</form>
+  </body>
+</html>

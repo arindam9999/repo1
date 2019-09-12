@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet"  href="{% static 'css/style1.css' %}">
+  </head>
+  <body style="background-image: url({% static 'images/bg.jpg' %});background-size: cover;" >
+    <div class="event-booking">
+  <h1>Register Your Venue</h1>
+  <form method ="POST" action=""> 
+  <div class="textbox">
+    <i class="fas fa-home"></i>
+    {% csrf_token %}
+    <input type="text" name="avenue_name" placeholder="Name Of Venue*">
+  </div>
+
+  <div class="textbox">
+    <i class="fas fa-map-marker"></i>
+    <input type="text" name="acity_name" placeholder="City*">
+  </div>
+
+  <div class="textbox">
+    <i class="fas fa-phone"></i>
+    <input type="text" name="aphone_no" placeholder="Phone*">
+  </div>
+
+ 
+  <input type="submit" class="btn" value="Submit">
+</div>'
+</form>
+  </body>
+</html>
+
+</body>
+</html>

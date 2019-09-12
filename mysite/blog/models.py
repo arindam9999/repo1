@@ -32,10 +32,10 @@ class Hotel(models.Model):
 class ClientRequest(models.Model):
 	client_name= models.CharField(max_length=100)
 	phone_no=models.CharField(max_length=15)
-	no_of_people=models.CharField(max_length=3)
+	no_of_people=models.CharField(max_length=3,)
 	hotel_name=models.ForeignKey(Hotel,on_delete=models.CASCADE)
 	date_of_booking=models.CharField(max_length=100)
-	time_of_booking=models.CharField(max_length=100)
+	time_of_booking=models.CharField(max_length=100,default='none')
 	client_email=models.EmailField()
 
 	def __str__(self):
@@ -68,6 +68,28 @@ class Profile(models.Model):
 
 	def __str__(self):
 		return self.name
+
+
+class ClientBookingRequest(models.Model):
+	client_name= models.CharField(max_length=100,default='none')
+	phone_no=models.CharField(max_length=15,default='none')
+	no_of_people=models.CharField(max_length=3,default='none')
+	date_of_booking=models.CharField(max_length=100,default='none')
+	theme=models.CharField(max_length=100,default='none')
+	client_email=models.EmailField()
+
+	def __str__(self):
+		return self.client_name
+
+
+
+class ClientRegistrationRequest(models.Model):
+	venue_name= models.CharField(max_length=100)
+	phone_no=models.CharField(max_length=15)
+	city_name=models.CharField(max_length=100)
+
+	def __str__(self):
+		return self.venue_name
 
 
 
